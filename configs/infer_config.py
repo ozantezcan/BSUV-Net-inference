@@ -1,8 +1,10 @@
 """
  Config file for inference with a trained model
+ For running the model with FPM, carefully read README file
 """
 
 from utils import augmentations as aug
+from utils import seg_utils as seg
 
 
 class SemanticSegmentation:
@@ -13,8 +15,17 @@ class SemanticSegmentation:
 
 
 class BSUVNet:
-    model_path = "./trained_models/BSUVNet_RGB.mdl"
-    seg_ch = True
+    #"""
+    model_path = "./trained_models/BSUVNet-emptyBG-recentBG-FPM.mdl"
+    seg_network = seg.segModel(SemanticSegmentation.yaml_path,
+                               SemanticSegmentation.encoder_path,
+                               SemanticSegmentation.decoder_path)
+    """
+    model_path = "./trained_models/BSUVNet-emptyBG-recentBG.mdl"
+    seg_network = None
+    """
+    seg_ch = False if seg_network is None else True
+
     mean_rgb = [0.485, 0.456, 0.406]
     std_rgb = [0.229, 0.224, 0.225]
     transforms_pre = []

@@ -252,7 +252,6 @@ class ToTensor:
                 inp_tensors.append(tvtf.ToTensor()(im.copy()))
 
         inp_tensor = torch.cat(inp_tensors, dim=0)
-
         return inp_tensor, tvtf.ToTensor()(cd_out)
 
 class NormalizeTensor:

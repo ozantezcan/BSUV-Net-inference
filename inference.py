@@ -1,10 +1,8 @@
 import sys
-sys.path.append("./utils/segmentation/") # Add the projects root dir to paths
 import configs.infer_config as cfg
 import cv2
 import torch
 from utils.data_loader import videoLoader
-from utils import seg_utils as seg
 import time
 import numpy as np
 
@@ -12,16 +10,10 @@ assert len(sys.argv) > 2, "You must provide the input and output video paths"
 inp_path = sys.argv[1]
 out_path = sys.argv[2]
 
-# Load the segmentation network
-seg_network = seg.segModel(cfg.SemanticSegmentation.yaml_path,
-                           cfg.SemanticSegmentation.encoder_path,
-                           cfg.SemanticSegmentation.decoder_path)
-
-
 
 # Start output video
 vid_loader = videoLoader(inp_path, empty_bg="no",
-                         recent_bg=50, seg_network=seg_network,
+                         recent_bg=50, seg_network=cfg.BSUVNet.seg_network,
                          transforms_pre=cfg.BSUVNet.transforms_pre, transforms_post=cfg.BSUVNet.transforms_post)
 fr = next(iter(vid_loader))
 c, h, w = fr.size()
@@ -32,7 +24,7 @@ vid_out = cv2.VideoWriter(out_path, cv2.VideoWriter_fourcc(*"MP4V"), 30, (3*w+20
 
 # Start Video Loader
 vid_loader = videoLoader(inp_path, empty_bg=cfg.BSUVNet.emtpy_bg, empty_win_len=cfg.BSUVNet.empty_win_len,
-                         recent_bg=cfg.BSUVNet.recent_bg, seg_network=seg_network,
+                         recent_bg=cfg.BSUVNet.recent_bg, seg_network=cfg.BSUVNet.seg_network,
                          transforms_pre=cfg.BSUVNet.transforms_pre, transforms_post=cfg.BSUVNet.transforms_post)
 tensor_loader = torch.utils.data.DataLoader(dataset=vid_loader, batch_size=1)
 
