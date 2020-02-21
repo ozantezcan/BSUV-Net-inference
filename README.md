@@ -30,7 +30,7 @@ https://drive.google.com/file/d/1ISzZyLDzuRuMnNmrZ3QVJCVeT_3eltDK/view?usp=shari
 1. If you want to to use a model with FPM channel, download the `HRNet_v2` model files from
 http://sceneparsing.csail.mit.edu/model/pytorch/ade20k-hrnetv2-c1/ and place them in
 `utils/segmentation/hrnet_v2` folder
-2. Change `configs/infer_configs` based on your application. 
+2. Change `configs/infer_config.py` based on your application. 
 3. Run `python inference.py <vid_in> <vid_out>` where `<vid_in>` is the path to the input video
 and  `<vid_out>` is the desired output path.
 
