@@ -29,7 +29,8 @@ class BSUVNet:
     seg_network = None
 
     emtpy_bg = "automatic"  # Automatically create an empty BG frame as median of initial frames
-    empty_win_len = 30  # Number of initial frames to be used for the empty BG model
+    empty_win_len = 30  # Number of initial frames to be used for the empty BG model when empty_bg="automatic"
+    empty_bg_path = "" # Path of the empty background. Only used when empty_bg="manual"
     recent_bg = 10  # Number of last frames to be used for recent BG model
 
     seg_ch = False if seg_network is None else True

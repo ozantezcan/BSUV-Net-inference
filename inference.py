@@ -1,5 +1,5 @@
 import sys
-import configs.infer_config as cfg
+import configs.infer_config_manualBG as cfg
 import cv2
 import torch
 from utils.data_loader import videoLoader
@@ -23,9 +23,16 @@ vid_out = cv2.VideoWriter(out_path, cv2.VideoWriter_fourcc(*"MP4V"), 30, (3*w+20
 
 
 # Start Video Loader
-vid_loader = videoLoader(inp_path, empty_bg=cfg.BSUVNet.emtpy_bg, empty_win_len=cfg.BSUVNet.empty_win_len,
-                         recent_bg=cfg.BSUVNet.recent_bg, seg_network=cfg.BSUVNet.seg_network,
-                         transforms_pre=cfg.BSUVNet.transforms_pre, transforms_post=cfg.BSUVNet.transforms_post)
+vid_loader = videoLoader(
+    inp_path, 
+    empty_bg=cfg.BSUVNet.emtpy_bg, 
+    empty_win_len=cfg.BSUVNet.empty_win_len,
+    empty_bg_path=cfg.BSUVNet.empty_bg_path,
+    recent_bg=cfg.BSUVNet.recent_bg,
+    seg_network=cfg.BSUVNet.seg_network,
+    transforms_pre=cfg.BSUVNet.transforms_pre,
+    transforms_post=cfg.BSUVNet.transforms_post
+    )
 tensor_loader = torch.utils.data.DataLoader(dataset=vid_loader, batch_size=1)
 
 # Load BSUV-Net
