@@ -27,6 +27,12 @@ Trained model which uses the RGB+FPM channels of empty background, recent backgr
 current frame (12-channel input) can be downloaded at: 
 https://drive.google.com/file/d/1ISzZyLDzuRuMnNmrZ3QVJCVeT_3eltDK/view?usp=sharing
 
+Trained weights for BSUV-Net 2.0 (12-channel input) can be downloaded at: 
+https://drive.google.com/file/d/12y2PMK8Ne7G27CI5Vx6hC2qkoF5cJo5I/view?usp=sharing
+
+Trained weights for Fast BSUV-Net 2.0 (12-channel input) can be downloaded at: 
+https://drive.google.com/file/d/12y944z5yPePy2RFPu8V4VQr9IfBhLjUM/view?usp=sharing
+
 ## Usage
 1. If you want to to use a model with FPM channel, download `HRNet_v2` model files from
 http://sceneparsing.csail.mit.edu/model/pytorch/ade20k-hrnetv2-c1/ and place them in
