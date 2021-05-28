@@ -16,17 +16,17 @@ class SemanticSegmentation:
 
 class BSUVNet:
 
-    """
+    
     # Model with FPM
-    model_path = "./trained_models/BSUVNet-emptyBG-recentBG-FPM.mdl"
+    model_path = "./trained_models/BSUV-Net-2.0.mdl"
     seg_network = seg.segModel(SemanticSegmentation.yaml_path,
                                SemanticSegmentation.encoder_path,
                                SemanticSegmentation.decoder_path)
-    """
+    
 
     # model without FPM
-    model_path = "./trained_models/BSUVNet-emptyBG-recentBG.mdl"
-    seg_network = None
+    # model_path = "./trained_models/Fast-BSUV-Net-2.0.mdl"
+    # seg_network = None
 
     emtpy_bg = "manual"  # Automatically create an empty BG frame as median of initial frames
     empty_win_len = 30  # Number of initial frames to be used for the empty BG model when empty_bg="automatic"
